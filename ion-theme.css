@@ -1,0 +1,60 @@
+/**
+ * @name ION_dark_01
+ * @description BWAH!
+ * @author ION606
+ * @authorId 582170007505731594
+ * @version 6.0.0
+ * @updateUrl nauruwu
+ * @source nauruwu
+ * @invite s3Xc2Dy8Y2
+ */
+
+ @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+ @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Henny+Penny&family=Kablammo&display=swap');
+
+/* [role="group"] [class*="username"] {
+    color: blue !important;
+} */
+
+[class*="messageListItem_d5deea"] span, [class*="textArea"] {
+    /* font-family: 'Playwrite NZ' !important; */
+    /* size: 10px !important; */
+    /* font-size: 13px !important; */
+    /* line-height: 10px !important; */
+}
+
+[id*="message-username"] [class*="username"] {
+    font-family: 'Playwrite NZ' !important;
+    font-size: 13px !important;
+}
+
+/* remove the annoying "..." at the end of the "about me" section */
+.markup_d6076c .defaultColor_a595eb {
+    display: inherit;
+}
+
+[class*="channel_c91bad"] {
+    font-family: 'Quicksand';
+}
+
+
+[class*="chatContent"] [class*="username"] {
+    color: pink !important;
+}
+
+
+.section_ba4d80 .markup_d6076c {
+    font-family: "Henny_Penny variant0", Tofu !important;
+}
+
+
+[role="textbox"] {
+    /* font-size: 13px; */
+}
+
+
+[data-id="937079880473014362"] {
+    /* PINK NODDERS! */
+}
