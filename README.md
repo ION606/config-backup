@@ -1,2 +1,2 @@
 # Config Files
-run using `curl -s https://github.com/ION606/swaybackup/raw/main/setup.sh`
+run using `/bin/bash -c "$(curl -fsSL https://github.com/ION606/swaybackup/raw/main/setup.sh)"`
