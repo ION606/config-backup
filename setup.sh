@@ -2,7 +2,7 @@
 
 # Make sure you're sudo
 if [ "$EUID" -ne 0 ]
-  then echo "Please run as root (run `sudo -i` then try again)"
+  then echo "Please run as root using `sudo -i` then try again"
   exit
 fi
 
