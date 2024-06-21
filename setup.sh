@@ -35,9 +35,11 @@ echo "This script will install and do the following:
 - Remove Thunar and Foot
 - Clean up and update system
 
-Do you want to proceed? (Y/N): "
+Do you want to proceed? (Y/N, default Y): "
 read answer
-if [ "$answer" != "Y" ]; then
+answer=${answer:-y}
+
+if [ "$answer" != "y" ]; then
   echo "Installation aborted."
   exit
 fi
