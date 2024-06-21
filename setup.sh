@@ -89,7 +89,7 @@ wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d\  -f 
 dnf install -y --refresh alacritty nautilus nodejs librewolf code \
 	git gh proton-vpn-gnome-desktop neovim gparted liberation-fonts \
 	vlc gcc gcc-c++ asciiquarium thunderbird grim slurp xclip \
-	qbittorrent gimp audacity python3-pip \
+	qbittorrent gimp audacity python3-pip htop \
 	|| echo "failed to install some packages!"
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
