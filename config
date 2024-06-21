@@ -9,10 +9,10 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left d
+set $left a
 set $down s
 set $up w
-set $right a
+set $right d
 # Your preferred terminal emulator
 # Recommends: foot
 set $term foot
