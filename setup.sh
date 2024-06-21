@@ -6,6 +6,42 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+# Explain what the script will do and ask for confirmation
+echo "This script will install and do the following:
+- Configuration files from https://github.com/ION606/swaybackup.git
+- Librewolf browser
+- Visual Studio Code
+- Various fonts
+- The latest version of Java
+- Proton VPN
+- Alacritty terminal
+- Nautilus file manager
+- Node.js
+- Git and GitHub CLI
+- Neovim
+- Gparted
+- VLC media player
+- GCC and G++
+- Asciiquarium
+- Thunderbird
+- Grim and Slurp (screenshot tools)
+- Xclip
+- Qbittorrent
+- Gimp
+- Audacity
+- Python3-pip
+- NPM packages (Bitwarden CLI, Alacritty themes, Typescript)
+- Vesktop
+- Remove Thunar and Foot
+- Clean up and update system
+
+Do you want to proceed? (Y/N): "
+read answer
+if [ "$answer" != "Y" ]; then
+  echo "Installation aborted."
+  exit
+fi
+
 # Make temporary directory
 mkdir ~/Downloads/tempinstall || ""
 cd ~/Downloads/tempinstall
