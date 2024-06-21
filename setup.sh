@@ -7,7 +7,6 @@ sudo su
 mkdir ~/Downloads/tempinstall || ""
 cd ~/Downloads/tempinstall
 
-
 # Configuration Files
 git clone https://github.com/ION606/swaybackup.git
 cd swaybackup
@@ -15,6 +14,7 @@ mv -f waybar/config /etc/xdg/waybar/
 mv -f waybar/style.css /etc/xdg/waybar
 mv -f config ~/.config/sway/config
 mf -f lockscreen.sh ~/lockscreen.sh
+
 
 # Installs
 
@@ -59,12 +59,11 @@ dnf remove thunar foot || ""
 # install vesktop
 wget -O vesktop.rpm https://vencord.dev/download/vesktop/amd64/rpm && dnf install vesktop || echo "failed to install Vesktop!"
 
-# Clean and update
+# Clean-up and update
 sudo dnf clean all
 sudo dnf update
-
-# Revert the auto-answer "Y"
 echo assumeyes=False | sudo tee -a /etc/dnf/dnf.conf
+cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at ~/Downloadds/tempinstall"
 
 # log-ins and installs
 bw login
