@@ -9,10 +9,10 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+set $left d
+set $down s
+set $up w
+set $right a
 # Your preferred terminal emulator
 # Recommends: foot
 set $term foot
@@ -110,10 +110,11 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym $mod+Shift+n exec foot
+    bindsym $mod+Shift+n exec alacritty
 
     # lock screen stuff
-    bindsym $mod+$right exec swaylock --image ~/Pictures/windows_anime.jpg
+    bindsym $mod+l exec bash ~/lockscreen.sh
+    bindsym $mod+c exec swaylock --image "~/Pictures/ohnocringe.jpg"
 
 #
 # Moving around:
