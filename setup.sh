@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Escalate Privilage
-sudo su
+# Make sure you're sudo
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root (run `sudo -i` then try again)"
+  exit
+fi
 
 # Make temporary directory
 mkdir ~/Downloads/tempinstall || ""
