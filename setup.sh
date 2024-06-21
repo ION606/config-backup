@@ -72,7 +72,9 @@ dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$
 	https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm \
 	install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts \
 	google-droid-sans-fonts google-droid-serif-fonts google-droid-sans-mono-fonts \
-	urw-fonts msttcore-fonts-installer || echo "failed to install fonts!"
+	urw-fonts || echo "failed to install fonts!"
+
+rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm || echo "failed to install microsoft fonts!"
 
 # Install Java
 LATEST_JDK=$(sudo dnf list available | grep -E 'java-[0-9]+-openjdk' | awk '{print $1}' | sort -V | tail -n 1) && dnf install -y $LATEST_JDK || echo "failed to install Java!"
@@ -85,7 +87,7 @@ wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d\  -f 
 dnf install -y --refresh alacritty nautilus nodejs librewolf code \
 	git gh proton-vpn-gnome-desktop neovim gparted liberation-fonts \
 	vlc gcc gcc-c++ asciiquarium thunderbird grim slurp xclip \
-	qbittorrent gimp audacity python3-pip
+	qbittorrent gimp audacity python3-pip \
 	|| echo "failed to install some packages!"
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
@@ -102,9 +104,8 @@ wget -O vesktop.rpm https://vencord.dev/download/vesktop/amd64/rpm && dnf instal
 sudo dnf clean all
 sudo dnf update
 echo assumeyes=False | sudo tee -a /etc/dnf/dnf.conf
-cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at ~/Downloadds/tempinstall"
+cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at ~/Downloads/tempinstall"
 
 # log-ins and installs
 bw login
 gh auth login
-msttcore-fonts-installer || echo "failed to run font installer!"
