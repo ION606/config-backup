@@ -109,3 +109,4 @@ cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at ~/
 # log-ins and installs
 bw login
 gh auth login
+exit
