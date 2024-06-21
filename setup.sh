@@ -92,7 +92,7 @@ dnf install -y --refresh alacritty nautilus nodejs librewolf code \
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 
-alacritty-themes Hyper || echo "Theme install failed!"
+alacritty-themes --create && alacritty-themes Hyper || echo "Theme install failed!"
 
 # Remove old programs
 dnf remove thunar foot || ""
