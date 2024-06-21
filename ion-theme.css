@@ -55,6 +55,14 @@
 }
 
 
+/* read-all button */
+.vc-ranb-button {
+    padding: 2px;
+    margin: 1px;
+    background-color: rgb(0, 90, 194);
+}
+
+
 [data-id="937079880473014362"] {
     /* PINK NODDERS! */
 }
