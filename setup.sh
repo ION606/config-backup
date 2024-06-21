@@ -99,8 +99,11 @@ alacritty-themes --create && alacritty-themes Hyper || echo "Theme install faile
 # Remove old programs
 dnf remove thunar foot || ""
 
-# install vesktop
+# Install vesktop
 wget -O vesktop.rpm https://vencord.dev/download/vesktop/amd64/rpm && dnf install vesktop || echo "failed to install Vesktop!"
+
+# Install Min
+rpm -i https://github.com/minbrowser/min/releases/download/v1.32.1/min-1.32.1-x86_64.rpm --ignoreos --force
 
 # Clean-up and update
 sudo dnf clean all
@@ -108,7 +111,7 @@ sudo dnf update
 echo assumeyes=False | sudo tee -a /etc/dnf/dnf.conf
 cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at ~/Downloads/tempinstall"
 
-# log-ins and installs
+# Log-ins and installs
 bw login
 gh auth login
 exit
