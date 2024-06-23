@@ -41,7 +41,7 @@
 
 
 [class*="chatContent"] [class*="username"] {
-    color: pink !important;
+    color: pink; /* removed `!important` because it overwrites colors in servers */
 }
 
 
