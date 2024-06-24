@@ -32,6 +32,8 @@ echo "This script will install and do the following:
 - Python3-pip
 - NPM packages (Bitwarden CLI, Alacritty themes, Typescript)
 - Vesktop
+- Docker
+- Minikube
 - Remove Thunar and Foot
 - Clean up and update system
 
@@ -84,9 +86,22 @@ LATEST_JDK=$(sudo dnf list available | grep -E 'java-[0-9]+-openjdk' | awk '{pri
 # Proton VPN
 wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d\  -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm" \
 	&& dnf install ./protonvpn-stable-release-1.0.1-2.noarch.rpm \
-	|| echo "failed to install Proton VPN"
+	|| echo "failed to install Proton VPN!"
 
-dnf install -y --refresh alacritty nautilus nodejs librewolf code \
+
+# Install Docker and Minikube
+dnf install dnf-plugins-core \
+	&& dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
+ 	&& dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
+  	|| echo "failed to install Docker!"
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm \
+	&& sudo rpm -Uvh minikube-latest.x86_64.rpm \
+ 	|| echo "failed to install Minikube!"
+
+
+# General Package Install
+dnf install --refresh alacritty nautilus nodejs librewolf code \
 	git gh proton-vpn-gnome-desktop neovim gparted liberation-fonts \
 	vlc gcc gcc-c++ asciiquarium thunderbird grim slurp xclip \
 	qbittorrent gimp audacity python3-pip htop \
@@ -94,7 +109,7 @@ dnf install -y --refresh alacritty nautilus nodejs librewolf code \
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 
-alacritty-themes --create && alacritty-themes Hyper || echo "Theme install failed!"
+alacritty-themes --create && alacritty-themes Hyper || echo "alacritty theme install failed!"
 
 # Remove old programs
 dnf remove thunar foot || ""
