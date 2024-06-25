@@ -104,7 +104,7 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest
 dnf install --refresh alacritty nautilus nodejs librewolf code \
 	git gh proton-vpn-gnome-desktop neovim gparted liberation-fonts \
 	vlc gcc gcc-c++ asciiquarium thunderbird grim slurp xclip \
-	qbittorrent gimp audacity python3-pip htop \
+	qbittorrent gimp audacity python3-pip htop obs-studio \
 	|| echo "failed to install some packages!"
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
@@ -119,19 +119,6 @@ wget -O vesktop.rpm https://vencord.dev/download/vesktop/amd64/rpm && dnf instal
 
 # Install Min
 rpm -i https://github.com/minbrowser/min/releases/download/v1.32.1/min-1.32.1-x86_64.rpm --ignoreos --force
-
-# install obs?
-echo "Install OBS?"
-read anserobs
-anserobs=${anserobs:-y}
-
-if [ "$anserobs" == "y" ]; then
-	curl -fsSL -o setupobs.sh https://github.com/ION606/swaybackup/raw/main/setupobs.sh \
-	&& chmod +x setupobs.sh \
-	&& sudo ./setupobs.sh \
-	|| echo "failed to install OBS!"
-fi
-
 
 # Clean-up and update
 sudo dnf clean all
