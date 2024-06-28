@@ -126,6 +126,9 @@ sudo dnf update
 echo assumeyes=False | sudo tee -a /etc/dnf/dnf.conf
 cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at ~/Downloads/tempinstall"
 
+# history preferences
+HISTIGNORE="*shutdown now*:*reboot*:erasedups"
+
 # Log-ins and installs
 bw login
 gh auth login
