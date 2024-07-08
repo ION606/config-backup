@@ -83,6 +83,10 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
 	natural_scroll enabled
 }
 
+input "2.4G Mouse" {
+	pointer_accel 0.75
+}
+
 ### Key bindings
 #
 # Basics:
