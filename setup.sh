@@ -34,6 +34,7 @@ echo "This script will install and do the following:
 - Vesktop
 - Docker
 - Minikube
+- Gnome Tweaks
 - Remove Thunar and Foot
 - Clean up and update system
 
@@ -104,12 +105,16 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest
 dnf install --refresh alacritty nautilus nodejs librewolf code \
 	git gh proton-vpn-gnome-desktop neovim gparted liberation-fonts \
 	vlc gcc gcc-c++ asciiquarium thunderbird grim slurp xclip \
-	qbittorrent gimp audacity python3-pip htop obs-studio \
+	qbittorrent gimp audacity python3-pip htop obs-studio gnome-tweaks \
 	|| echo "failed to install some packages!"
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 
+mkdir -p ~/.icons
+echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" > ~/.icons/links.txt
+
 alacritty-themes --create && alacritty-themes Hyper || echo "alacritty theme install failed!"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Remove old programs
 dnf remove thunar foot || ""
