@@ -204,3 +204,7 @@
 [data-id="937079880473014362"] {
     /* PINK NODDERS! */
 }
+
+[aria-label="Channels"] li * {
+    color: rgba(255, 255, 255, 0.884) !important;
+}
