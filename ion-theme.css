@@ -206,5 +206,9 @@
 }
 
 [aria-label="Channels"] li * {
-    color: rgba(255, 255, 255, 0.884) !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+[aria-label*="unread"] {
+    color: white !important;
 }
