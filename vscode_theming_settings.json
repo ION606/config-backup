@@ -1,0 +1,18 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "files.autoSave": "afterDelay",
+    "workbench.colorCustomizations": {
+        "[Default Dark Modern]": {
+            "menu.background": "#000413",
+            "editor.background": "#000413",
+            "sideBar.background": "#000413",
+            "activityBar.background": "#000413",
+            "statusBar.background": "#000413",
+            "statusBar.noFolderBackground": "#000413",
+            "statusBar.debuggingBackground": "#000413",
+        }
+    },
+    "workbench.colorTheme": "Default Dark Modern",
+    "editor.fontFamily": "Fira Code",
+}
