@@ -212,3 +212,12 @@
 [aria-label*="unread"] {
     color: white !important;
 }
+
+/* spoiler stuff */
+[class*="spoilerMarkdownContent"] {
+    background-color: rgba(37, 0, 85, 0.85);
+}
+
+[class*="spoilerMarkdownContent"]:hover {
+    background-color: rgba(37, 0, 85, 1);
+}
