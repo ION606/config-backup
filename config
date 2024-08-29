@@ -14,8 +14,8 @@ set $down s
 set $up w
 set $right d
 # Your preferred terminal emulator
-# Recommends: foot
-set $term foot
+# Recommends: foot (and I disagree)
+set $term alacritty
 set $alac alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
