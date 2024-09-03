@@ -64,10 +64,6 @@
       "#000000",
       "#FFFFFF"
     ],
-    "CHANNELS_DEFAULT": [
-      "#ae4bb2",
-      "#FFFFFF"
-    ],
     "HEADER_PRIMARY": [
       "#ffffff",
       "#FFFFFF"
@@ -127,7 +123,7 @@
     ],
     "CHANNELS_DEFAULT": [
       "#130D39",
-      "#6a7480"
+      "#000000"
     ],
     "TEXT_LINK": [
       "#dc74e3",
