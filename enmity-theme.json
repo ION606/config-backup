@@ -11,7 +11,7 @@
       "id": "358402930191106049"
     }
   ],
-  "theme_color_map": {
+  "semanticColors": {
     "KEYBOARD": [
       "#000000",
       "#FFFFFF"
@@ -134,19 +134,20 @@
       "#000000"
     ]
   },
-  "colours": {
-    "PRIMARY_DARK": "#ffffff",
-    "PRIMARY_DARK_100": "#ffffff",
-    "PRIMARY_DARK_300": "#ffffff",
-    "PRIMARY_DARK_360": "#ae4bb2",
-    "PRIMARY_DARK_400": "#ae4bb2",
-    "PRIMARY_DARK_500": "#ae4bb2",
-    "PRIMARY_DARK_600": "#000000",
-    "PRIMARY_DARK_630": "#353535",
-    "PRIMARY_DARK_700": "#353535",
-    "PRIMARY_DARK_800": "#000000",
-    "BRAND_NEW": "#ae4bb2",
-    "WHITE": "#FFFFFF"
+  "rawColors": {
+    "PRIMARY": "#ffffff",
+    "PRIMARY_100": "#ffffff",
+    "PRIMARY_300": "#ffffff",
+    "PRIMARY_360": "#ae4bb2",
+    "PRIMARY_400": "#ae4bb2",
+    "PRIMARY_500": "#ae4bb2",
+    "PRIMARY_600": "#000000",
+    "PRIMARY_630": "#353535",
+    "PRIMARY_700": "#353535",
+    "PRIMARY_800": "#000000",
+    "BRAND": "#ae4bb2",
+    "WHITE": "#FFFFFF",
+    "PLUM_20": "#000000"
   },
   "unsafe_colors": {
     "CHAT_GREY": "#000000"
