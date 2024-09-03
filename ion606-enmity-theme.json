@@ -146,8 +146,7 @@
     "PRIMARY_700": "#353535",
     "PRIMARY_800": "#000000",
     "BRAND": "#ae4bb2",
-    "WHITE": "#FFFFFF",
-    "PLUM_20": "#000000"
+    "WHITE": "#FFFFFF"
   },
   "unsafe_colors": {
     "CHAT_GREY": "#000000"
