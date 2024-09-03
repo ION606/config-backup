@@ -1,6 +1,5 @@
 {
-  "name": "ion606-enmity-theme",
-  "description": "forked from https://github.com/apricitykin/useless-shit/blob/main/Desperado.json",
+  "name": "ION606EnmityTheme",
   "authors": [
     {
       "name": "Abby",
@@ -11,7 +10,7 @@
       "id": "358402930191106049"
     }
   ],
-  "semanticColors": {
+  "theme_color_map": {
     "KEYBOARD": [
       "#000000",
       "#FFFFFF"
@@ -64,6 +63,10 @@
       "#000000",
       "#FFFFFF"
     ],
+    "CHANNELS_DEFAULT": [
+      "#ae4bb2",
+      "#FFFFFF"
+    ],
     "HEADER_PRIMARY": [
       "#ffffff",
       "#FFFFFF"
@@ -99,57 +102,28 @@
     "CHANNEL_ICON": [
       "#ae4bb2",
       "#000000"
-    ],
-    "SCROLLBAR_THIN_THUMB": [
-      "#2a1858",
-      "hsla(217, 7.6%, 33.5%, 0.3)"
-    ],
-    "SCROLLBAR_THIN_TRACK": [
-      "transparent",
-      "hsla(0, 0%, 0%, 0)"
-    ],
-    "SCROLLBAR_AUTO_THUMB": [
-      "#2a1858",
-      "#cccccc"
-    ],
-    "SCROLLBAR_AUTO_TRACK": [
-      "rgba(0, 0, 0, 0.1)",
-      "#f2f2f2"
-    ],
-    "CHANNELTEXTAREA_BACKGROUND": [
-      "#111111",
-      "#ebedef"
-    ],
-    "CHANNELS_DEFAULT": [
-      "#130D39",
-      "#000000"
-    ],
-    "TEXT_LINK": [
-      "#dc74e3",
-      "#000000"
     ]
   },
-  "rawColors": {
-    "PRIMARY": "#ffffff",
-    "PRIMARY_100": "#ffffff",
-    "PRIMARY_300": "#ffffff",
-    "PRIMARY_360": "#ae4bb2",
-    "PRIMARY_400": "#ae4bb2",
-    "PRIMARY_500": "#ae4bb2",
-    "PRIMARY_600": "#000000",
-    "PRIMARY_630": "#353535",
-    "PRIMARY_700": "#353535",
-    "PRIMARY_800": "#000000",
-    "BRAND": "#ae4bb2",
-    "WHITE": "#FFFFFF",
-    "PLUM_20": "#000000"
+  "colours": {
+    "PRIMARY_DARK": "#ffffff",
+    "PRIMARY_DARK_100": "#ffffff",
+    "PRIMARY_DARK_300": "#ffffff",
+    "PRIMARY_DARK_360": "#ae4bb2",
+    "PRIMARY_DARK_400": "#ae4bb2",
+    "PRIMARY_DARK_500": "#ae4bb2",
+    "PRIMARY_DARK_600": "#000000",
+    "PRIMARY_DARK_630": "#353535",
+    "PRIMARY_DARK_700": "#353535",
+    "PRIMARY_DARK_800": "#000000",
+    "BRAND_NEW": "#ae4bb2",
+    "WHITE": "#FFFFFF"
   },
   "unsafe_colors": {
     "CHAT_GREY": "#000000"
   },
   "background": {
     "blur": 0,
-    "url": "https://i.pinimg.com/originals/0c/82/53/0c8253a596cf30442d2b2753923734f5.jpg",
+    "url": "https://media.discordapp.net/attachments/996426870633545831/1001852043956334612/C4201C0F-7BD1-4BFE-BA94-B49E1DA7FA4D.jpg",
     "alpha": 1.0
   }
 }
