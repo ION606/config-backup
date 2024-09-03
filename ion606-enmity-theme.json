@@ -100,7 +100,6 @@
       "#ae4bb2",
       "#000000"
     ],
-
     "SCROLLBAR_THIN_THUMB": [
       "#2a1858",
       "hsla(217, 7.6%, 33.5%, 0.3)"
@@ -142,7 +141,8 @@
     "PRIMARY_700": "#353535",
     "PRIMARY_800": "#000000",
     "BRAND": "#ae4bb2",
-    "WHITE": "#FFFFFF"
+    "WHITE": "#FFFFFF",
+    "PLUM_20": "#000000"
   },
   "unsafe_colors": {
     "CHAT_GREY": "#000000"
