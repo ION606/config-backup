@@ -130,8 +130,7 @@
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-	"on-click": "nmtui"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -150,7 +149,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pipewire & pavucontrol"
+        "on-click": "pavucontrol"
     },
     "custom/media": {
         "format": "{icon} {}",
