@@ -36,9 +36,14 @@ set $menu wofi --show=drun style="/home/ion606/.cache/wofi/style.css"
 # Requires: desktop-backgrounds-compat, swaybg
 # output * bg /home/ion606/Pictures/bk.gif fill
 output * bg "$(find /home/ion606/Pictures/astolfo/ -type f | shuf -n 1)" fill
+bindsym $mod+b exec swaymsg output "*" bg "$(find /home/ion606/Pictures/bk/ -type f | shuf -n 1)" fill
+
+# Misc apps on startup
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec nm-applet --indicator
 exec blueman-applet
+exec bash /home/ion606/getargs.sh
+exec mako
 
 set $colors {
     background #000000
@@ -98,10 +103,9 @@ input "2.4G Mouse" {
 ### Key bindings
 #
 # Basics:
-#
     
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym XF86AudioMute exec pactl set-sink-volume @DEFAULT_SINK@ 0
     bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
     bindsym XF86MonBrightnessUp exec brightnessctl set +10%
@@ -198,8 +202,8 @@ input "2.4G Mouse" {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    # bindsym $mod+b splith
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking

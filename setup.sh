@@ -6,6 +6,9 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+sudo pacman -Sy --needed --noconfirm --noconfirm fzf git yay
+USERTEMP=$(who | awk '{print $1}' | sort -u | fzf)
+
 # Explain what the script will do and ask for confirmation
 echo "This script will install and do the following:
 - Configuration files from https://github.com/ION606/swaybackup.git
@@ -13,7 +16,6 @@ echo "This script will install and do the following:
 - Visual Studio Code
 - Various fonts
 - The latest version of Java
-- Proton VPN
 - Alacritty terminal
 - Nautilus file manager
 - Node.js
@@ -48,89 +50,63 @@ if [ "$answer" != "y" ]; then
 fi
 
 # Make temporary directory
-mkdir ~/Downloads/tempinstall || ""
-cd ~/Downloads/tempinstall
+mkdir $USERTEMP/Downloads/tempinstall || ""
+cd $USERTEMP/Downloads/tempinstall
 
 # Configuration Files
 git clone https://github.com/ION606/swaybackup.git
 cd swaybackup
 mv -f waybar/config /etc/xdg/waybar/
 mv -f waybar/style.css /etc/xdg/waybar
-mv -f config ~/.config/sway/config
-mf -f lockscreen.sh ~/lockscreen.sh
+mv -f config $USERTEMP/.config/sway/config
+mf -f lockscreen.sh $USERTEMP/lockscreen.sh
 
+# replace "ion606" with the selected user
+sed -i "s/ion606/$USERTEMP/g" config
+
+# set up automations in child process
+mkdir -p $USERTEMP/.automations && cp -r -f auto/* $USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash $USERTEMP/.automations/setupauto.sh $USERTEMP &> $USERTEMP/setuplogs.log) &
 
 # Installs
-
-# Automatically Answer "Y"
-echo assumeyes=True | sudo tee -a /etc/dnf/dnf.conf
-
 # Librewolf
 curl -fsSL https://rpm.librewolf.net/librewolf-repo.repo | pkexec tee /etc/yum.repos.d/librewolf.repo
 
-# VS Code
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-printf "[vscode]\nname=packages.microsoft.com\nbaseurl=https://packages.microsoft.com/yumrepos/vscode/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscode.repo
-
 # Fonts
-dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-	https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm \
-	install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts \
-	google-droid-sans-fonts google-droid-serif-fonts google-droid-sans-mono-fonts \
-	urw-fonts || echo "failed to install fonts!"
-
-rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm || echo "failed to install microsoft fonts!"
+yay -Sy ttf-bitstream-vera ttf-droid gsfonts ttf-ms-win11-auto || echo "failed to install fonts!"
 
 # Install Java
-LATEST_JDK=$(sudo dnf list available | grep -E 'java-[0-9]+-openjdk' | awk '{print $1}' | sort -V | tail -n 1) && dnf install -y $LATEST_JDK || echo "failed to install Java!"
+LATEST_JDK=$(sudo dnf list available | grep -E 'java-[0-9]+-openjdk' | awk '{print $1}' | sort -V | tail -n 1) && yay -Sy --needed --noconfirm $LATEST_JDK || echo "failed to install Java!"
 
-# Proton VPN
-wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d\  -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm" \
-	&& dnf install ./protonvpn-stable-release-1.0.1-2.noarch.rpm \
-	|| echo "failed to install Proton VPN!"
-
-
-# Install Docker and Minikube
-dnf install dnf-plugins-core \
-	&& dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
- 	&& dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-  	|| echo "failed to install Docker!"
-
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm \
-	&& sudo rpm -Uvh minikube-latest.x86_64.rpm \
- 	|| echo "failed to install Minikube!"
+# # Proton VPN
+# wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d\  -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm" \
+# 	&& dnf install ./protonvpn-stable-release-1.0.1-2.noarch.rpm \
+# 	|| echo "failed to install Proton VPN!"
 
 
 # General Package Install
-dnf install --refresh alacritty nautilus nodejs librewolf code \
+yay -Sy --needed --noconfirm alacritty nautilus nodejs librewolf vscodium-bin \
 	git gh proton-vpn-gnome-desktop neovim gparted liberation-fonts \
 	vlc gcc gcc-c++ asciiquarium thunderbird grim slurp xclip \
 	qbittorrent gimp audacity python3-pip htop obs-studio gnome-tweaks \
-        torbrowser-launcher \
+    torbrowser-launcher lm_sensors fancontrol blueman blueman-applet docker minikube \
+	min-browser-bin libreoffice-fresh npm wofi nm-applet nm-connection-editor mako\
 	|| echo "failed to install some packages!"
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 
-mkdir -p ~/.icons
-echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" > ~/.icons/links.txt
+mkdir -p $USERTEMP/.icons
+echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" > $USERTEMP/.icons/links.txt
 
 alacritty-themes --create && alacritty-themes Hyper || echo "alacritty theme install failed!"
+cp -r $USERTEMP/.config/wofi/ wofi > /dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Remove old programs
-dnf remove thunar foot || ""
-
-# Install vesktop
-wget -O vesktop.rpm https://vencord.dev/download/vesktop/amd64/rpm && dnf install vesktop || echo "failed to install Vesktop!"
-
-# Install Min
-rpm -i https://github.com/minbrowser/min/releases/download/v1.32.1/min-1.32.1-x86_64.rpm --ignoreos --force
+yay -R thunar foot || ""
 
 # Clean-up and update
-sudo dnf clean all
-sudo dnf update
-echo assumeyes=False | sudo tee -a /etc/dnf/dnf.conf
-cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at ~/Downloads/tempinstall"
+yay && yay -Scc
+cd ../ && rm -rf tempinstall || echo "failed to remove temporary directory at $PWD/tempinstall"
 
 # history preferences
 HISTIGNORE="*shutdown now*:*reboot*:erasedups"
