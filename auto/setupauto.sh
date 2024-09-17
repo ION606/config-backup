@@ -17,7 +17,7 @@ cat << EOF > /etc/systemd/system/shownotif.service
 Description=Run shownotif script
 
 [Service]
-ExecStart=/home/$1/.customscripts/run.sh
+ExecStart=/home/$1/.automations/run.sh
 Type=simple
 User=$1
 Environment="DISPLAY=:0"
