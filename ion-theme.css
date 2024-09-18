@@ -221,3 +221,8 @@
 [class*="spoilerMarkdownContent"]:hover {
     background-color: rgba(37, 0, 85, 1);
 }
+
+/* sidebar */
+.custom-theme-background .scroller_fea3ef {
+    background: transparent !important;
+}
