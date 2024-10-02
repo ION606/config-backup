@@ -1,0 +1,162 @@
+{
+  "name": "Amethyst2",
+  "description": "fnorked",
+  "version": "2",
+  "authors": [
+    {
+      "name": "Abby",
+      "id": "499287211381096458"
+    },
+    {
+      "name": "ION606",
+      "id": "358402930191106049"
+    }
+  ],
+  "semanticColors": {
+    "HEADER_PRIMARY": [
+      "#f1f1f1",
+      "#060607"
+    ],
+    "HEADER_SECONDARY": [
+      "#c8c8c8",
+      "#4f5660"
+    ],
+    "TEXT_NORMAL": [
+      "#FBFBFB",
+      "#2e3338"
+    ],
+    "TEXT_MUTED": [
+      "#b1b1b1",
+      "#747f8d"
+    ],
+    "INTERACTIVE_NORMAL": [
+      "#8961ba",
+      "#4f5660"
+    ],
+    "INTERACTIVE_HOVER": [
+      "#dcddde",
+      "#2e3338"
+    ],
+    "INTERACTIVE_ACTIVE": [
+      "#a674e3",
+      "#808080"
+    ],
+    "INTERACTIVE_MUTED": [
+      "#bfb9ff",
+      "#c7ccd1"
+    ],
+    "BACKGROUND_PRIMARY": [
+      "#0d0212",
+      "#ffffff"
+    ],
+    "BACKGROUND_SECONDARY": [
+      "rgba(13, 2, 18, 0.2)",
+      "#f2f3f5"
+    ],
+    "BACKGROUND_SECONDARY_ALT": [
+      "#0d0212",
+      "#ebedef"
+    ],
+    "BACKGROUND_TERTIARY": [
+      "#0d0212",
+      "#e3e5e8"
+    ],
+    "BACKGROUND_ACCENT": [
+      "#0d0212",
+      "#747f8d"
+    ],
+    "BACKGROUND_FLOATING": [
+      "#0d0212",
+      "#FFFFFF"
+    ],
+    "BACKGROUND_MOBILE_PRIMARY": [
+      "#0d0212",
+      "#f8f9f9"
+    ],
+    "BACKGROUND_MOBILE_SECONDARY": [
+      "#0d0212",
+      "#ffffff"
+    ],
+    "BACKGROUND_NESTED_FLOATING": [
+      "#0d0212",
+      "#ffffff"
+    ],
+    "BACKGROUND_MESSAGE_HOVER": [
+      "rgba(255, 255, 255, 0.02)",
+      "#FFFFFF"
+    ],
+    "BACKGROUND_MODIFIER_HOVER": [
+      "rgba(255, 255, 255, 0.02)",
+      "hsla(214, 9.9%, 50.4%, 0.08)"
+    ],
+    "BACKGROUND_MODIFIER_ACTIVE": [
+      "rgba(255, 255, 255, 0.03)",
+      "hsla(214, 9.9%, 50.4%, 0.16)"
+    ],
+    "BACKGROUND_MODIFIER_SELECTED": [
+      "rgba(255, 255, 255, 0.04)",
+      "hsla(214, 9.9%, 50.4%, 0.24)"
+    ],
+    "BACKGROUND_MODIFIER_ACCENT": [
+      "#808080",
+      "#808080"
+    ],
+    "SCROLLBAR_THIN_THUMB": [
+      "#2a1858",
+      "hsla(217, 7.6%, 33.5%, 0.3)"
+    ],
+    "SCROLLBAR_THIN_TRACK": [
+      "transparent",
+      "hsla(0, 0%, 0%, 0)"
+    ],
+    "SCROLLBAR_AUTO_THUMB": [
+      "#2a1858",
+      "#cccccc"
+    ],
+    "SCROLLBAR_AUTO_TRACK": [
+      "rgba(0, 0, 0, 0.1)",
+      "#f2f2f2"
+    ],
+    "CHANNELTEXTAREA_BACKGROUND": [
+      "#111111",
+      "#ebedef"
+    ],
+    "CHANNELS_DEFAULT": [
+      "#c8c8c8",
+      "#6a7480"
+    ],
+    "TEXT_LINK": [
+      "#a674e3",
+      "#000000"
+    ],
+    "KEYBOARD": [
+      "#111011",
+      "#FFFFFF"
+    ]
+  },
+  "rawColors": {
+    "PRIMARY": "#747474",
+    "PRIMARY_100": "#FFFFFF",
+    "PRIMARY_200": "#FFFFFF",
+    "PRIMARY_300": "#B6B6B6",
+    "PRIMARY_360": "#C8C8C8",
+    "PRIMARY_400": "#bebee3",
+    "PRIMARY_500": "#a674e3",
+    "PRIMARY_600": "#0d0212",
+    "PRIMARY_630": "#1a1b21",
+    "PRIMARY_700": "#101010",
+    "PRIMARY_800": "#0d0212",
+    "BRAND": "#a674e3",
+    "RED": "#a674e3",
+    "GREEN_600": "#a674e3",
+    "PLUM_20": "#000000"
+  },
+  "unsafe_colors": {
+    "CHAT_GREY": "#0d0212"
+  },
+  "background": {
+    "blur": 0.1,
+    "url": "https://wallpapersmug.com/download/2160x3840/95afc8/dark-night-river-forest-minimal-art.jpg",
+    "alpha": 1.0
+  }
+}
