@@ -10,5 +10,5 @@ set -g fish_color_selection --background=#fdf6e3 --foreground=#073642 # Cream se
 set -g fish_color_search_match --background=#268bd2 --foreground=#ffffff # Blue search highlight
 set -g fish_color_operator '#859900' # Lime green
 set -g fish_color_escape '#d33682' # Pink
-set -g fish_color_autosuggestion '#7DF9FF' # Pale aqua
+set -g fish_color_autosuggestion '#B98A8F' # Dull pink
 set -g fish_color_end '#859900' # Lime green

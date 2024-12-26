@@ -118,6 +118,7 @@ postgresql
 powertop-git
 prismlauncher
 pulseaudio-alsa
+pv
 python-black
 python-certifi
 python-pip
@@ -224,4 +225,5 @@ xorg-xev
 xorg-xhost
 xorg-xinit
 xorg-xlsclients
+yay
 zip

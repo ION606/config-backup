@@ -1,19 +1,17 @@
-# Source global definitions (if necessary in fish)
-if test -f /etc/bashrc
-    source /etc/bashrc
+if test -f /home/ion606/.config/fish/completions/glow.fish
+    source /home/ion606/.config/fish/completions/glow.fish
 end
 
 if test -f /home/ion606/.config/fish/completions/glow.fish
     source /home/ion606/.config/fish/completions/glow.fish
 end
 
-# Source global definitions (if necessary in fish)
-if test -f /etc/bashrc
-    source /etc/bashrc
+if test -f /home/ion606/.config/fish/functions/builtins.fish
+    source /home/ion606/.config/fish/functions/builtins.fish
 end
 
-if test -f /home/ion606/.config/fish/completions/glow.fish
-    source /home/ion606/.config/fish/completions/glow.fish
+if test -f /home/ion606/.config/fish/functions/commands.fish
+    source /home/ion606/.config/fish/functions/commands.fish
 end
 
 
@@ -135,10 +133,6 @@ function updateDiscord
 end
 
 # Aliases
-function submitty
-    bash /home/ion606/runsubmitty.sh
-end
-
 function showinfo
     bash /home/ion606/.customscripts/swaybackup/auto/shownotif.sh info $argv
 end
