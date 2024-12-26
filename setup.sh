@@ -10,35 +10,37 @@ sudo pacman -Sy --needed --noconfirm --noconfirm fzf git yay
 USERTEMP=$(who | awk '{print $1}' | sort -u | fzf)
 
 # Explain what the script will do and ask for confirmation
-echo "This script will install and do the following:
+echo "This script will install and configure the following:
 - Configuration files from https://github.com/ION606/swaybackup.git
 - Librewolf browser
 - Visual Studio Code
-- Various fonts
-- The latest version of Java
+- Various modern and nerd fonts
+- The latest versions of Java (multiple versions)
 - Alacritty terminal
 - Nautilus file manager
-- Node.js
+- Node.js and NPM packages
 - Git and GitHub CLI
 - Neovim
 - Gparted
 - VLC media player
-- GCC and G++
-- Asciiquarium
-- Thunderbird
+- GCC and G++ (development tools)
+- Asciiquarium (fun ASCII aquarium)
+- Thunderbird (email client)
 - Grim and Slurp (screenshot tools)
-- Xclip
-- Qbittorrent
-- Gimp
-- Audacity
-- Python3-pip
-- NPM packages (Bitwarden CLI, Alacritty themes, Typescript)
-- Vesktop
-- Docker
-- Minikube
-- Gnome Tweaks
-- Remove Thunar and Foot
-- Clean up and update system
+- Xclip (clipboard management)
+- Qbittorrent (torrent client)
+- GIMP (image editing)
+- Audacity (audio editing)
+- Python3-pip (Python package manager)
+- Docker and Minikube (containerization and Kubernetes)
+- Gnome Tweaks (desktop customization)
+- TexLive (LaTeX tools and fonts)
+- Obsidian (note-taking app)
+- Starship (customizable shell prompt)
+- Tailscale (VPN)
+- Warp (Cloudflare's VPN)
+- Remove Thunar and Foot (if present)
+- Clean up and update the system
 
 Do you want to proceed? (Y/N, default Y): "
 read answer
@@ -54,15 +56,30 @@ mkdir $USERTEMP/Downloads/tempinstall || ""
 cd $USERTEMP/Downloads/tempinstall
 
 # Configuration Files
-git clone https://github.com/ION606/swaybackup.git
-cd swaybackup
+git clone https://github.com/ION606/config-backup.git
+cd config-backup
+
+# sway
 mv -f waybar/config /etc/xdg/waybar/
-mv -f waybar/style.css /etc/xdg/waybar
+mv -f waybar/style.css /etc/xdg/waybar/
 mv -f config $USERTEMP/.config/sway/config
-mf -f lockscreen.sh $USERTEMP/lockscreen.sh
 
 # replace "ion606" with the selected user
 sed -i "s/ion606/$USERTEMP/g" config
+
+# hyprland
+mv -f hyprland/hy3.conf /home/$USERTEMP/config/hypr/hy3.conf
+mv -f hyprland/hyprland.conf /home/$USERTEMP/config/hypr/hyprland.conf
+
+# i3
+mv -f i3/config /home/$USERTEMP/config/i3/config
+mv -f i3/lockscreen.sh /home/$USERTEMP/config/i3/lockscreen.sh
+
+# terminal
+mv -f terminal/fish /home/$USERTEMP/.config/
+mkdir -p /home/$USERTEMP/.config/alacritty/
+mv -f terminal/alacritty.toml /home/$USERTEMP/.config/alacritty/
+mv -f terminal/starship.toml /home/$USERTEMP/.config/
 
 # set up automations in child process
 mkdir -p $USERTEMP/.automations && cp -r -f auto/* $USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash $USERTEMP/.automations/setupauto.sh $USERTEMP &> $USERTEMP/setuplogs.log) &
@@ -84,13 +101,9 @@ LATEST_JDK=$(sudo dnf list available | grep -E 'java-[0-9]+-openjdk' | awk '{pri
 
 
 # General Package Install
-yay -Sy --needed --noconfirm alacritty nautilus nodejs librewolf vscodium-bin \
-	git gh proton-vpn-gnome-desktop neovim gparted liberation-fonts \
-	vlc gcc gcc-c++ asciiquarium thunderbird grim slurp xclip \
-	qbittorrent gimp audacity python3-pip htop obs-studio gnome-tweaks \
-    torbrowser-launcher lm_sensors fancontrol blueman blueman-applet docker minikube \
-	min-browser-bin libreoffice-fresh npm wofi nm-applet nm-connection-editor mako\
-	|| echo "failed to install some packages!"
+yay -Sy --needed --noconfirm - < packages.txt || echo "failed to install some packages!"
+
+mv -f Librewolf/chrome /home/$USERTEMP/.librewolf/
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 

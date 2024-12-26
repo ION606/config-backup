@@ -420,4 +420,12 @@ url-prefix("about:home") {
   display: block !important;
 }
 
+
+@-moz-document url(about:privatebrowsing){
+  html.private{ background-color: #2B2A33 !important; } /* back color */
+  html.private div.showSearch button.search-handoff-button { 
+    background-color: #42414D !important; } /* search box back color */
+  html.private div.showPrivate div.info { display: none !important; } /* hide bottom panel */
+}
+ 
 /* devtools.debugger.remote-enabled */

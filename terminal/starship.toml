@@ -1,0 +1,74 @@
+# Character module (prompt symbol)
+[character]
+success_symbol = "[❥ ](#FFB6C1)"  # Cute heart or floral symbol
+error_symbol = "[✗ ](bold red)"    # Error symbol
+
+# Directory module
+[directory]
+truncation_length = 3
+style = "italic bold #FFDDE5" # Pastel pink
+truncation_symbol = "…"     # Ellipsis with a flower
+read_only = "🔒"       # Lock icon for read-only directories
+
+# Git branch module
+[git_branch]
+symbol = " "
+style = "bold #FFB6C1" # Pink for Git branches
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+
+# Git status module
+[git_status]
+style = "bold #FFDDEE" # Lighter pink
+stashed = "📦 "
+untracked = "✨ "
+modified = "🛠 "
+ahead = "🚀 "
+
+# Time module
+[time]
+disabled = true
+time_range = "01:00:00-00:00:00"
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+utc_time_offset = "+1"
+use_12hr = false
+style = "bold yellow"
+
+# Battery module
+[battery]
+disabled = false
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "💔"
+# style = "bold #FF69B4" # Hot pink
+
+# Line break module
+[line_break]
+disabled = true
+
+# Jobs module
+[jobs]
+symbol = "🔧 "
+style = "bold #FFD700" # Gold
+threshold = 1
+
+# Package version module
+[package]
+disabled = false
+symbol = "📦 "
+style = "bold #FFB6C1" # Soft pink
+
+# Kubernetes context module
+[kubernetes]
+symbol = "☸️  "
+style = "bold #FFDDEE"
+
+# Python version module
+[python]
+symbol = "🐍 "
+style = "bold #FFB6C1"
+
+# Node.js version module
+[nodejs]
+symbol = "🌿 "
+style = "bold #87CEEB" # Light blue

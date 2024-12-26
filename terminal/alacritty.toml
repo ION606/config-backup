@@ -1,0 +1,48 @@
+[colors.bright]
+black = "#686868"
+blue = "#57C7FF"
+cyan = "#A4FFFF"
+green = "#5AF78E"
+magenta = "#FF92D0"
+red = "#FF6E67"
+white = "#FFFFFF"
+yellow = "#F3F99D"
+
+[colors.normal]
+black = "#282A36"
+blue = "#57C7FF"
+cyan = "#9AEDFE"
+green = "#5AF78E"
+magenta = "#FF6AC1"
+red = "#FF5C57"
+white = "#F1F1F0"
+yellow = "#F3F99D"
+
+[colors.primary]
+background = "#000000"
+foreground = "#BF00FF"
+
+[font]
+size = 8
+
+[font.bold]
+family = "Fira Code"
+style = "Bold"
+
+[font.italic]
+family = "Fira Code"
+style = "Italic"
+
+[font.normal]
+family = "Fira Code"
+style = "Regular"
+
+[window]
+opacity = 0.8
+
+[cursor]
+blink_interval = 500
+
+[cursor.style]
+shape = "Block"
+blinking = "Always"
