@@ -5,6 +5,7 @@ alacritty-themes
 ani-cli
 asciiquarium
 audacity
+auto-cpufreq 
 base
 base-devel
 batsignal

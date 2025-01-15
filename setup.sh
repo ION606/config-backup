@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Make sure you're sudo
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root using `sudo -i` then try again"
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root using $(sudo -i) then try again"
   exit
 fi
 
@@ -39,6 +39,7 @@ echo "This script will install and configure the following:
 - Starship (customizable shell prompt)
 - Tailscale (VPN)
 - Warp (Cloudflare's VPN)
+- auto-cpufreq (battery optimizer)
 - Remove Thunar and Foot (if present)
 - Clean up and update the system
 
@@ -47,8 +48,8 @@ read answer
 answer=${answer:-y}
 
 if [ "$answer" != "y" ]; then
-	echo "Installation aborted."
-	exit
+  echo "Installation aborted."
+  exit
 fi
 
 # Make temporary directory
@@ -81,8 +82,12 @@ mkdir -p /home/$USERTEMP/.config/alacritty/
 mv -f terminal/alacritty.toml /home/$USERTEMP/.config/alacritty/
 mv -f terminal/starship.toml /home/$USERTEMP/.config/
 
+# battery
+mkdir -p $USERTEMP/auto-cpufreq/auto-cpufreq.conf
+mv auto-cpufreq.conf $USERTEMP/auto-cpufreq/auto-cpufreq.conf
+
 # set up automations in child process
-mkdir -p $USERTEMP/.automations && cp -r -f auto/* $USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash $USERTEMP/.automations/setupauto.sh $USERTEMP &> $USERTEMP/setuplogs.log) &
+mkdir -p $USERTEMP/.automations && cp -r -f auto/* $USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash $USERTEMP/.automations/setupauto.sh $USERTEMP &>$USERTEMP/setuplogs.log) &
 
 # Installs
 # Librewolf
@@ -99,19 +104,18 @@ LATEST_JDK=$(sudo dnf list available | grep -E 'java-[0-9]+-openjdk' | awk '{pri
 # 	&& dnf install ./protonvpn-stable-release-1.0.1-2.noarch.rpm \
 # 	|| echo "failed to install Proton VPN!"
 
-
 # General Package Install
-yay -Sy --needed --noconfirm - < packages.txt || echo "failed to install some packages!"
+yay -Sy --needed --noconfirm - <packages.txt || echo "failed to install some packages!"
 
 mv -f Librewolf/chrome /home/$USERTEMP/.librewolf/
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 
 mkdir -p $USERTEMP/.icons
-echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" > $USERTEMP/.icons/links.txt
+echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" >$USERTEMP/.icons/links.txt
 
 alacritty-themes --create && alacritty-themes Hyper || echo "alacritty theme install failed!"
-cp -r $USERTEMP/.config/wofi/ wofi > /dev/null 2>&1 &
+cp -r $USERTEMP/.config/wofi/ wofi >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Remove old programs
