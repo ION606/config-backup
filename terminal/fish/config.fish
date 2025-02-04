@@ -1,17 +1,17 @@
-if test -f /home/ion606/.config/fish/completions/glow.fish
-    source /home/ion606/.config/fish/completions/glow.fish
+if test -f ~/.config/fish/completions/glow.fish
+    source ~/.config/fish/completions/glow.fish
 end
 
-if test -f /home/ion606/.config/fish/completions/glow.fish
-    source /home/ion606/.config/fish/completions/glow.fish
+if test -f ~/.config/fish/completions/glow.fish
+    source ~/.config/fish/completions/glow.fish
 end
 
-if test -f /home/ion606/.config/fish/functions/builtins.fish
-    source /home/ion606/.config/fish/functions/builtins.fish
+if test -f ~/.config/fish/functions/builtins.fish
+    source ~/.config/fish/functions/builtins.fish
 end
 
-if test -f /home/ion606/.config/fish/functions/commands.fish
-    source /home/ion606/.config/fish/functions/commands.fish
+if test -f ~/.config/fish/functions/commands.fish
+    source ~/.config/fish/functions/commands.fish
 end
 
 
@@ -20,7 +20,7 @@ end
 # Function to update Discord
 function updateDiscord
     # The directory where the contents will be copied to
-    set target_dir /home/ion606/Discord
+    set target_dir ~/Discord
 
     # Find the tar.gz file following the naming pattern
     set tar_file (find . -type f -name "discord-*.tar.gz" | head -n 1)
@@ -47,11 +47,11 @@ end
 
 # Aliases
 function submitty
-    bash /home/ion606/runsubmitty.sh
+    bash ~/runsubmitty.sh
 end
 
 function showinfo
-    bash /home/ion606/.customscripts/swaybackup/auto/shownotif.sh info $argv
+    bash ~/.customscripts/swaybackup/auto/shownotif.sh info $argv
 end
 
 function sway
@@ -63,8 +63,8 @@ function minecraft
 end
 
 # Export paths and variables
-set -x PATH /home/ion606/Downloads/flutter/bin $PATH
-set -x PATH_TO_FX "/home/ion606/javafx-sdk-22.0.1/lib"
+set -x PATH ~/Downloads/flutter/bin $PATH
+set -x PATH_TO_FX "~/javafx-sdk-22.0.1/lib"
 set -x HISTCONTROL "shutdown *:ignoredups:erasedups"
 
 set -x CC /usr/bin/gcc
@@ -93,7 +93,7 @@ if test -s "$HOME/.sdkman/bin/sdkman-init.sh"
 end
 
 # PNPM
-set -x PNPM_HOME "/home/ion606/.local/share/pnpm"
+set -x PNPM_HOME "~/.local/share/pnpm"
 if not contains "$PNPM_HOME" $PATH
     set -x PATH $PNPM_HOME $PATH
 end
@@ -107,7 +107,7 @@ alias temperature="sensors"
 # Function to update Discord
 function updateDiscord
     # The directory where the contents will be copied to
-    set target_dir /home/ion606/Discord
+    set target_dir ~/Discord
 
     # Find the tar.gz file following the naming pattern
     set tar_file (find . -type f -name "discord-*.tar.gz" | head -n 1)
@@ -134,7 +134,7 @@ end
 
 # Aliases
 function showinfo
-    bash /home/ion606/.customscripts/swaybackup/auto/shownotif.sh info $argv
+    bash ~/.customscripts/swaybackup/auto/shownotif.sh info $argv
 end
 
 function sway
@@ -146,13 +146,14 @@ function minecraft
 end
 
 # Export paths and variables
-set -x PATH /home/ion606/Downloads/flutter/bin $PATH
-set -x PATH_TO_FX "/home/ion606/javafx-sdk-22.0.1/lib"
+set -x PATH ~/Downloads/flutter/bin $PATH
+set -x PATH_TO_FX "~/javafx-sdk-22.0.1/lib"
 set -x HISTCONTROL "shutdown *:ignoredups:erasedups"
 
 set -x CC /usr/bin/gcc
 set -x CXX "/usr/bin/g++"
 set -x EDITOR nvim
+set -x CFLAGS "--sysroot=/usr/share/wasi-sysroot"
 
 # Clear history alias
 function clearhist
@@ -176,7 +177,7 @@ if test -s "$HOME/.sdkman/bin/sdkman-init.sh"
 end
 
 # PNPM
-set -x PNPM_HOME "/home/ion606/.local/share/pnpm"
+set -x PNPM_HOME "~/.local/share/pnpm"
 if not contains "$PNPM_HOME" $PATH
     set -x PATH $PNPM_HOME $PATH
 end
@@ -184,9 +185,12 @@ end
 alias postgres="pg_ctl -D /var/lib/postgres/data -l logfile start"
 alias temperature="sensors"
 
+set -gx PATH /opt/cuda/bin $PATH
+set -gx LD_LIBRARY_PATH /opt/cuda/lib64 $LD_LIBRARY_PATH
+
 # colors
 starship init fish | source
 
-if test -f /home/ion606/.config/fish/conf.d/colors.fish
-    source /home/ion606/.config/fish/conf.d/colors.fish
+if test -f ~/.config/fish/conf.d/colors.fish
+    source ~/.config/fish/conf.d/colors.fish
 end
