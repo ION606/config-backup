@@ -325,6 +325,25 @@
 </svg>") center/18px no-repeat;
 }
 
+[class*="stackedBars__"] {
+    background: linear-gradient(180deg, rgb(0, 83, 104), #02573b8c) !important;
+}
+
+[aria-checked="false"] [class*="mentionButton__"][class*="mentionButton__"]:hover *:not(svg) {
+    background-color: orange;
+}
+
+[aria-checked="false"] [class*="mentionButton__"]:hover {
+    color: orange !important;
+}
+
+[aria-checked="true"] [class*="mentionButton__"][class*="mentionButton__"]:hover *:not(svg) {
+    background-color: rgb(0, 255, 128);
+}
+
+[aria-checked="true"] [class*="mentionButton__"]:hover {
+    color: rgb(0, 255, 128) !important;
+}
 
 /* .custom-theme-background .scroller_fea3ef {
     background: transparent !important;
