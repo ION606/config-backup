@@ -226,3 +226,113 @@
 .custom-theme-background .scroller_fea3ef {
     background: transparent !important;
 }
+
+[aria-label="Vencord Toolbox"]:hover {
+    color: red;
+}
+
+[aria-label*="unread"] {
+    color: blue !important;
+}
+
+[role="dialog"] {
+    /* background: linear-gradient(135deg, #7e5bef, #c084fc); */
+    background: linear-gradient(135deg, #4c2889, #7a3fc3);
+}
+
+[role="dialog"] [data-text-variant="text-xs/normal"] {
+    color: rgb(255, 185, 54);
+    text-decoration: underline;
+}
+
+[class*="channelTextArea__"] [class*="scrollableContainer__"] {
+    background-color: #02573b8c;
+}
+
+[aria-label="User area"] {
+    background-color: rgba(66, 34, 107, 0.514) !important;
+}
+
+[class*="theme-light images-light user-profile-popout"]
+[aria-label="Roles"] [class*="role_"] {
+    background: linear-gradient(135deg, #0f3d2e, #14532d);
+    color: rgb(137, 255, 137) !important;
+}
+
+[class*="theme-light images-light user-profile-popout"]
+[aria-label="Roles"] [class*="role_"] [data-text-variant] {
+    color: white;
+}
+
+[aria-label="View Permissions"] {
+    background-color: orange;
+}
+
+[aria-label="View Permissions"] button {
+    color: rgb(159, 249, 252);
+}
+
+[aria-label="View Permissions"]:hover {
+    background-color: rgb(159, 249, 252);
+}
+
+[aria-label="View Permissions"] button:hover {
+    color: orange;
+}
+
+[aria-label="Add Role"] {
+    background-color: green;
+    color: white;
+}
+
+[aria-label="Add Role"]:hover {
+    background-color: rgb(37, 216, 37);
+    color: rgb(0, 0, 0);
+}
+
+[class*="roleRemoveIcon_"] path {
+    fill: rgb(255, 0, 0) !important;
+}
+
+[class*="theme-light images-light user-profile-popout"]
+[class*="channelTextArea__"] {
+    color: black !important;
+}
+
+[class*="theme-light images-light user-profile-popout"]
+[class*="placeholder__"],
+[aria-label="Note"]::placeholder {
+    color: rgb(48, 48, 48);
+}
+
+[class*="memberSince_"] [aria-label="Discord"] {
+    color: rgb(4, 0, 255);
+}
+
+[class*="memberSince_"] svg:not([aria-label]) {
+    fill: green;
+}
+
+[class*="connectedAccountVerifiedIcon"]  {
+    fill: red !important;
+}
+
+[class*="connectedAccountVerifiedIcon_"] {
+    cursor: pointer;
+    background: url("data:image/svg+xml;utf8, \
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+<path fill='gold' fill-rule='evenodd' d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z'/>\
+</svg>") center/18px no-repeat;
+}
+
+
+/* .custom-theme-background .scroller_fea3ef {
+    background: transparent !important;
+} */
+
+/* [class*="spoilerContent"] {
+    background-color: rgb(23, 3, 112);
+    outline: 0.2px darkgray dashed;
+} */
+
+
