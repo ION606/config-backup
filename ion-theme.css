@@ -245,6 +245,10 @@
     text-decoration: underline;
 }
 
+[aria-label="Expression Picker"][role="dialog"] {
+    background: transparent;
+}
+
 [class*="channelTextArea__"] [class*="scrollableContainer__"] {
     background-color: #02573b8c;
 }
