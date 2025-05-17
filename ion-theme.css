@@ -14,7 +14,7 @@
 
 
 /* IMPORT CSS */
-@import url(https://clearvision.github.io/ClearVision-v6/main.css);
+@import url(https://clearvision.github.io/ClearVision-v7/main.css);
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
@@ -349,13 +349,7 @@
     color: rgb(0, 255, 128) !important;
 }
 
-/* .custom-theme-background .scroller_fea3ef {
-    background: transparent !important;
-} */
-
-/* [class*="spoilerContent"] {
-    background-color: rgb(23, 3, 112);
-    outline: 0.2px darkgray dashed;
-} */
-
+.leading_c38106::before,.leading_c38106::after {
+    display: none;
+}
 
