@@ -37,7 +37,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib/notify-osd/notify-osd &
 
 exec_always feh --bg-fill  "$(find /home/ion606/Pictures/astolfo/ -type f | shuf -n 1)"
-exec_always picom --config .config/picom/picom.conf
+exec_always picom --config /home/ion606/.config/picom/picom.config
 exec_always --no-startup-id eww daemon
 
 focus_follows_mouse no
