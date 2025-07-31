@@ -349,6 +349,14 @@
     color: rgb(0, 255, 128) !important;
 }
 
+[aria-label="Add Role"] {
+  background-color: black !important;
+}
+
+[aria-label="Add Role"]:first-child {
+  border-radius: 0 0 10px 10px;
+}
+
 .leading_c38106::before,.leading_c38106::after {
     display: none;
 }
