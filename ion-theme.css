@@ -14,7 +14,7 @@
 
 
 /* IMPORT CSS */
-@import url(https://clearvision.github.io/ClearVision-v7/main.css);
+@import url('https://raw.githubusercontent.com/ClearVision/ClearVision-v7/master/ClearVision-v7.theme.css');
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
