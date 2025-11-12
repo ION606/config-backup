@@ -14,7 +14,7 @@
 
 
 /* IMPORT CSS */
-@import url(https://clearvision.github.io/ClearVision-v7/main.css);
+@import url('https://raw.githubusercontent.com/ClearVision/ClearVision-v7/master/ClearVision-v7.theme.css');
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
@@ -349,7 +349,20 @@
     color: rgb(0, 255, 128) !important;
 }
 
+[aria-label="Add Role"] {
+  background-color: black !important;
+}
+
+[aria-label="Add Role"]:first-child {
+  border-radius: 0 0 10px 10px;
+}
+
 .leading_c38106::before,.leading_c38106::after {
     display: none;
+}
+
+/* popup */
+.standardSidebarView__23e6b {
+    background: rgb(0 0 0 / 90%);
 }
 
