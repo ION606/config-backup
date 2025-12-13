@@ -1,8 +1,13 @@
 #!/bin/bash
 
+img="$(find /home/ion606/Pictures/astolfo/ -type f | shuf -n 1)";
+tmp="/tmp/i3lock-bg.png";
+
+magick "$img" -strip "$tmp";
+
 if [[ "$1" == "--single" ]]; then
-    i3lock -i Pictures/ohnocringe.jpg -F
-    exit 0
+  i3lock -i "$tmp" -F
+  exit 0
 fi
 
 BLANK='#00000000'
@@ -13,33 +18,32 @@ WRONG='#880000bb'
 VERIFYING='#00564dE6'
 
 i3lock \
---insidever-color=$CLEAR     \
---ringver-color=$VERIFYING   \
-\
---insidewrong-color=$CLEAR   \
---ringwrong-color=$WRONG     \
-\
---inside-color=$BLANK        \
---ring-color=$DEFAULT        \
---line-color=$BLANK          \
---separator-color=$DEFAULT   \
-\
---verif-color=$TEXT          \
---wrong-color=$TEXT          \
---time-color=$TEXT           \
---date-color=$TEXT           \
---layout-color=$TEXT         \
---keyhl-color=$WRONG         \
---bshl-color=$WRONG          \
-\
---screen 1                   \
---blur 9                     \
---clock                      \
---indicator                  \
---time-str="%H:%M:%S"        \
---date-str="%A, %Y-%m-%d"       \
---keylayout 1   
-
+  --insidever-color=$CLEAR \
+  --ringver-color=$VERIFYING \
+  \
+  --insidewrong-color=$CLEAR \
+  --ringwrong-color=$WRONG \
+  \
+  --inside-color=$BLANK \
+  --ring-color=$DEFAULT \
+  --line-color=$BLANK \
+  --separator-color=$DEFAULT \
+  \
+  --verif-color=$TEXT \
+  --wrong-color=$TEXT \
+  --time-color=$TEXT \
+  --date-color=$TEXT \
+  --layout-color=$TEXT \
+  --keyhl-color=$WRONG \
+  --bshl-color=$WRONG \
+  \
+  --screen 1 \
+  --blur 9 \
+  --clock \
+  --indicator \
+  --time-str="%H:%M:%S" \
+  --date-str="%A, %Y-%m-%d" \
+  --keylayout 1
 
 # # paths for temporary images
 # tmpbg='/tmp/lockscreen.png'
@@ -72,11 +76,11 @@ i3lock \
 # # while kill -0 "$lock_pid" 2>/dev/null; do
 # #   # reset tmpbg to the original blurred image
 # #   cp "$original_bg" "$tmpbg"
-  
+
 # #   # overlay the clock text on the reset image
 # #   magick "$tmpbg" -gravity center -font Ubuntu-Bold -pointsize 50 -fill white \
 # #     -annotate +0+200 "$(date '+%I:%M %p')" "$tmpbg"
-  
+
 # #   # reload i3lock with the updated image
 # #   i3lock -i "$tmpbg" --nofork &
 # #   sleep 1

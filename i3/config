@@ -37,6 +37,12 @@ exec_always --no-startup-id bash /home/ion606/setupScreens.sh
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always --no-startup-id dunst
 
+# no timeout after 600 seconds ffs
+exec_always --no-startup-id xset s off
+exec_always --no-startup-id xset s noblank
+exec_always --no-startup-id xset -dpms
+
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
