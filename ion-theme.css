@@ -236,8 +236,9 @@
 }
 
 [role="dialog"] {
+    background: transparent;
     /* background: linear-gradient(135deg, #7e5bef, #c084fc); */
-    background: linear-gradient(135deg, #4c2889, #7a3fc3);
+    /* background: linear-gradient(135deg, #4c2889, #7a3fc3); */
 }
 
 [role="dialog"] [data-text-variant="text-xs/normal"] {
