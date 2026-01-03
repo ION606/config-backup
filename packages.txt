@@ -70,6 +70,7 @@ jre-openjdk
 jre21-openjdk
 jre8-openjdk
 krita
+lemurs
 less
 libreoffice-fresh
 librewolf-bin

@@ -64,13 +64,14 @@ fmt_time() {
     hours="${hours% hour}";
     # convert decimal hours to h m
     local total_min;
-    total_min="$(python - <<'PY'
+    total_min="$(python - <<'PY' "$hours"
 import math,sys
-h=float(sys.stdin.read().strip())
-m=round((h-int(h))*60)
+arg = sys.argv[1] if len(sys.argv) > 1 else "0"
+h = float(arg)
+m = round((h - int(h)) * 60)
 print(f"{int(h)}h{m}m")
 PY
-<<<"$hours")";
+)";
     printf "%s" "$total_min";
   else
     printf "%s" "$raw";

@@ -40,6 +40,7 @@ echo "This script will install and configure the following:
 - Tailscale (VPN)
 - Warp (Cloudflare's VPN)
 - auto-cpufreq (battery optimizer)
+- change and configure the default login to lemurs
 - Remove Thunar and Foot (if present)
 - Clean up and update the system
 
@@ -106,6 +107,11 @@ LATEST_JDK=$(sudo dnf list available | grep -E 'java-[0-9]+-openjdk' | awk '{pri
 
 # General Package Install
 yay -Sy --needed --noconfirm - <packages.txt || echo "failed to install some packages!"
+
+# login manager stuffs
+sudo systemctl disable display-manager.service
+sudo systemctl enable lemurs.service
+sudo mv -f lemurs-config.toml /etc/lemurs/config.toml
 
 mv -f Librewolf/chrome /home/$USERTEMP/.librewolf/
 
