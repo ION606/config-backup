@@ -236,8 +236,9 @@
 }
 
 [role="dialog"] {
+    background: transparent;
     /* background: linear-gradient(135deg, #7e5bef, #c084fc); */
-    background: linear-gradient(135deg, #4c2889, #7a3fc3);
+    /* background: linear-gradient(135deg, #4c2889, #7a3fc3); */
 }
 
 [role="dialog"] [data-text-variant="text-xs/normal"] {
@@ -359,5 +360,10 @@
 
 .leading_c38106::before,.leading_c38106::after {
     display: none;
+}
+
+/* popup */
+.standardSidebarView__23e6b {
+    background: rgb(0 0 0 / 90%);
 }
 

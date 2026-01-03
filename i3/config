@@ -22,7 +22,12 @@ font pango:monospace 8
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-exec_always --no-startup-id killall -q polybar; polybar -c .config/polybar/main.module &
+
+# COMMENT THIS IN FOR ONE SCREEN
+# exec_always --no-startup-id killall -q polybar; polybar -c .config/polybar/main.module &
+
+# DELETEME if you change your monitor setup
+exec_always --no-startup-id bash /home/ion606/setupScreens.sh
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -30,14 +35,21 @@ exec_always --no-startup-id killall -q polybar; polybar -c .config/polybar/main.
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec_always --no-startup-id dunst
+
+# no timeout after 600 seconds ffs
+exec_always --no-startup-id xset s off
+exec_always --no-startup-id xset s noblank
+exec_always --no-startup-id xset -dpms
+
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib/notify-osd/notify-osd &
 
-exec_always feh --bg-fill  "$(find /home/ion606/Pictures/astolfo/ -type f | shuf -n 1)"
-exec_always picom --config /home/ion606/.config/picom/picom.config
+exec_always feh --bg-fill "$(find /home/ion606/Pictures/astolfo/ -type f | shuf -n 1)"
+exec_always picom --config /home/ion606/.config/picom/picom.conf
 exec_always --no-startup-id eww daemon
 
 focus_follows_mouse no
@@ -53,7 +65,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 
 
-bindsym $mod+Shift+B exec feh --bg-fill "/home/ion606/Pictures/bk.gif"
+bindsym $mod+Shift+B exec feh --bg-fill "$(find /home/ion606/Pictures/astolfo/ -type f | shuf -n 1)"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

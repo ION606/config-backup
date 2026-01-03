@@ -54,8 +54,8 @@ if [ "$answer" != "y" ]; then
 fi
 
 # Make temporary directory
-mkdir $USERTEMP/Downloads/tempinstall || ""
-cd $USERTEMP/Downloads/tempinstall
+mkdir /home/$USERTEMP/Downloads/tempinstall || ""
+cd /home/$USERTEMP/Downloads/tempinstall
 
 # Configuration Files
 git clone https://github.com/ION606/config-backup.git
@@ -64,7 +64,7 @@ cd config-backup
 # sway
 mv -f waybar/config /etc/xdg/waybar/
 mv -f waybar/style.css /etc/xdg/waybar/
-mv -f config $USERTEMP/.config/sway/config
+mv -f config /home/$USERTEMP/.config/sway/config
 
 # replace "ion606" with the selected user
 sed -i "s/ion606/$USERTEMP/g" config
@@ -84,11 +84,11 @@ mv -f terminal/alacritty.toml /home/$USERTEMP/.config/alacritty/
 mv -f terminal/starship.toml /home/$USERTEMP/.config/
 
 # battery
-mkdir -p $USERTEMP/auto-cpufreq/auto-cpufreq.conf
-mv auto-cpufreq.conf $USERTEMP/auto-cpufreq/auto-cpufreq.conf
+mkdir -p /home/$USERTEMP/auto-cpufreq/auto-cpufreq.conf
+mv auto-cpufreq.conf /home/$USERTEMP/auto-cpufreq/auto-cpufreq.conf
 
 # set up automations in child process
-mkdir -p $USERTEMP/.automations && cp -r -f auto/* $USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash $USERTEMP/.automations/setupauto.sh $USERTEMP &>$USERTEMP/setuplogs.log) &
+mkdir -p /home/$USERTEMP/.automations && cp -r -f auto/* /home/$USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash /home/$USERTEMP/.automations/setupauto.sh /home/$USERTEMP &> /home/$USERTEMP/setuplogs.log) &
 
 # Installs
 # Librewolf
@@ -117,11 +117,11 @@ mv -f Librewolf/chrome /home/$USERTEMP/.librewolf/
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 
-mkdir -p $USERTEMP/.icons
-echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" >$USERTEMP/.icons/links.txt
+mkdir -p /home/$USERTEMP/.icons
+echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" > /home/$USERTEMP/.icons/links.txt
 
 alacritty-themes --create && alacritty-themes Hyper || echo "alacritty theme install failed!"
-cp -r $USERTEMP/.config/wofi/ wofi >/dev/null 2>&1 &
+cp -r /home/$USERTEMP/.config/wofi/ wofi >/dev/null 2>&1 &
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Remove old programs
