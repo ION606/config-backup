@@ -30,11 +30,17 @@ set -x EDITOR nvim
 
 set -gx PATH /opt/cuda/bin $PATH
 set -gx LD_LIBRARY_PATH /opt/cuda/lib64 $LD_LIBRARY_PATH
+set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
+set -gx PATH $JAVA_HOME/bin:$PATH
 
 # GTK and Qt themes
 set -x GTK_THEME "Adwaita:dark"
 set -x GTK2_RC_FILES "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc"
 set -x QT_STYLE_OVERRIDE Adwaita-Dark
+
+# Ani-CLI
+set -x ANI_CLI_PLAYER vlc
+set -x ANI_CLI_DOWNLOAD_DIR ~/Videos/Anime
 
 # SDKMAN init
 if test -s "$SDKMAN_DIR/bin/sdkman-init.sh"
@@ -57,6 +63,11 @@ end
 function killvesktop
 kill -9 (ps aux | grep vesktop | grep -v grep | awk '{print $2}' | head -n 1)
 ps aux | grep vesktop
+end
+
+function killwebex
+bash /home/ion606/killwebex.sh
+ps aux | grep webex
 end
 
 function updateDiscord
@@ -96,3 +107,7 @@ starship init fish | source
 if test -f ~/.config/fish/conf.d/colors.fish
 source ~/.config/fish/conf.d/colors.fish
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
