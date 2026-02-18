@@ -23,7 +23,7 @@ font pango:monospace 8
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id killall -q polybar; polybar --config=/home/ion606/.config/polybar/main.module &
-exec_always --no-startup-id /usr/libexec/xfce-polkit &
+exec --no-startup-id /usr/libexec/xfce-polkit &
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
