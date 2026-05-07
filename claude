@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+log_dir="${HOME}/.claude/logs"
+mkdir -p "$log_dir"
+
+timestamp="$(date +%Y%m%d-%H%M%S)"
+session_file="${log_dir}/session-${timestamp}.log"
+cwd="$(pwd)"
+
+echo "session: ${session_file}"
+
+if [[ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]]; then
+  CLAUDE_CODE_OAUTH_TOKEN="$(pass show claude/oauth-token | tr -d '\n')" || {
+    echo "error: could not retrieve token from pass" >&2
+    exit 1
+  }
+fi
+
+if [[ -n "${ANTHROPIC_API_KEY:-}" ]]; then
+  echo "error: ANTHROPIC_API_KEY would override oauth, billing API instead of plan" >&2
+  exit 1
+fi
+
+# build minimal claude.json with subscription binding only
+auth_blob="$(
+  python3 <<PY
+import json
+d = json.load(open("${HOME}/.claude.json"))
+out = {
+    "hasCompletedOnboarding": True,
+    "theme": "dark",
+    "bypassPermissionsModeAccepted": True,
+    "userID": d.get("userID", ""),
+    "oauthAccount": d.get("oauthAccount", {}),
+    "projects": {
+        "/workspace": {
+            "hasTrustDialogAccepted": True,
+            "hasTrustDialogHooksAccepted": True,
+            "hasCompletedProjectOnboarding": True,
+        },
+    },
+}
+print(json.dumps(out))
+PY
+)"
+
+if [[ -z "$(echo "$auth_blob" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("userID",""))')" ]]; then
+  echo "error: no userID found in host ~/.claude.json -- log in on host first" >&2
+  exit 1
+fi
+
+export CLAUDE_CODE_OAUTH_TOKEN
+export AUTH_BLOB="$auth_blob"
+
+docker pull containers.ion606.dev/ion606/claude-docker:latest &>/dev/null
+
+docker run --rm -it \
+  -v "${cwd}:/workspace" \
+  -e CLAUDE_CODE_OAUTH_TOKEN \
+  -e AUTH_BLOB \
+  -e README_CONTENTS="$(cat ${cwd}/CLAUDE.md)" \
+  --cap-drop ALL \
+  ion-claude:latest "$@" \
+  2>&1 | tee "$session_file"

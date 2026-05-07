@@ -88,7 +88,7 @@ mkdir -p /home/$USERTEMP/auto-cpufreq/auto-cpufreq.conf
 mv auto-cpufreq.conf /home/$USERTEMP/auto-cpufreq/auto-cpufreq.conf
 
 # set up automations in child process
-mkdir -p /home/$USERTEMP/.automations && cp -r -f auto/* /home/$USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash /home/$USERTEMP/.automations/setupauto.sh /home/$USERTEMP &> /home/$USERTEMP/setuplogs.log) &
+mkdir -p /home/$USERTEMP/.automations && cp -r -f auto/* /home/$USERTEMP/.automations/ && $(sudo pacman -Sy --needed --noconfirm dunst && sudo bash /home/$USERTEMP/.automations/setupauto.sh /home/$USERTEMP &>/home/$USERTEMP/setuplogs.log) &
 
 # Installs
 # Librewolf
@@ -114,11 +114,12 @@ sudo systemctl enable lemurs.service
 sudo mv -f lemurs-config.toml /etc/lemurs/config.toml
 
 mv -f Librewolf/chrome /home/$USERTEMP/.librewolf/
+mv -f claude /usr/sbin/
 
 npm install -g @bitwarden/cli alacritty-themes typescript || echo "failed to install Typescript!"
 
 mkdir -p /home/$USERTEMP/.icons
-echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" > /home/$USERTEMP/.icons/links.txt
+echo -e "https://www.gnome-look.org/p/1305251\nhttps://www.gnome-look.org/p/2091068" >/home/$USERTEMP/.icons/links.txt
 
 alacritty-themes --create && alacritty-themes Hyper || echo "alacritty theme install failed!"
 cp -r /home/$USERTEMP/.config/wofi/ wofi >/dev/null 2>&1 &
