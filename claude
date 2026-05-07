@@ -33,11 +33,13 @@ out = {
     "bypassPermissionsModeAccepted": True,
     "userID": d.get("userID", ""),
     "oauthAccount": d.get("oauthAccount", {}),
+    "mcpServers": d.get("mcpServers", {}),
     "projects": {
         "/workspace": {
             "hasTrustDialogAccepted": True,
             "hasTrustDialogHooksAccepted": True,
             "hasCompletedProjectOnboarding": True,
+            "mcpServers": d.get("projects", {}).get(cwd, {}).get("mcpServers", {}),
         },
     },
 }
@@ -56,10 +58,12 @@ export AUTH_BLOB="$auth_blob"
 docker pull containers.ion606.dev/ion606/claude-docker:latest &>/dev/null
 
 docker run --rm -it \
-  -v "${cwd}:/workspace" \
-  -e CLAUDE_CODE_OAUTH_TOKEN \
-  -e AUTH_BLOB \
-  -e README_CONTENTS="$(cat ${cwd}/CLAUDE.md)" \
-  --cap-drop ALL \
-  ion-claude:latest "$@" \
-  2>&1 | tee "$session_file"
+	-v "${cwd}:/workspace" \
+	-v "${HOME}/.claude/plugins:/root/.claude/plugins:ro" \
+	-v "${HOME}/.claude/settings.json:/root/.claude/settings.json:ro" \
+	-e CLAUDE_CODE_OAUTH_TOKEN \
+	-e AUTH_BLOB \
+	-e README_CONTENTS="$(cat ${cwd}/CLAUDE.md)" \
+	--cap-drop ALL \
+	ion-claude:latest "$@" \
+	2>&1 | tee "$session_file"
