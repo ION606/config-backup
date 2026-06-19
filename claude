@@ -39,7 +39,7 @@ out = {
             "hasTrustDialogAccepted": True,
             "hasTrustDialogHooksAccepted": True,
             "hasCompletedProjectOnboarding": True,
-            "mcpServers": d.get("projects", {}).get(cwd, {}).get("mcpServers", {}),
+            "mcpServers": d.get("projects", {}).get("${cwd}", {}).get("mcpServers", {}),
         },
     },
 }
@@ -55,15 +55,51 @@ fi
 export CLAUDE_CODE_OAUTH_TOKEN
 export AUTH_BLOB="$auth_blob"
 
-docker pull containers.ion606.dev/ion606/claude-docker:latest &>/dev/null
+# sync CLAUDE.md into .claude/ so it's visible at /workspace/.claude/CLAUDE.md inside container
+mkdir -p "${cwd}/.claude"
+if [[ -f "${cwd}/CLAUDE.md" ]]; then
+  cp "${cwd}/CLAUDE.md" "${cwd}/.claude/CLAUDE.md"
+fi
+
+docker pull containers.ion606.dev/ion606/claude-docker:latest 1> /dev/null
+
+# resolve symlinks under cwd, mount host targets at container-side resolved paths
+# absolute link: container path == host target
+# relative link: container path = normalize(/workspace + relpath(link,cwd)/.. + raw)
+symlink_max_depth="${CLAUDE_SYMLINK_MAXDEPTH:-3}"
+symlink_mounts=()
+seen_pairs=()
+while IFS= read -r -d '' link; do
+	host_target="$(readlink -f -- "$link" 2>/dev/null)" || continue
+	[[ -z "$host_target" || ! -e "$host_target" ]] && continue
+	
+	# skip if target inside cwd (already covered by /workspace mount)
+	[[ "$host_target" == "$cwd"/* || "$host_target" == "$cwd" ]] && continue
+	
+	raw="$(readlink -- "$link")"
+	if [[ "$raw" = /* ]]; then
+		container_path="$host_target"
+	else
+		rel="${link#$cwd/}"
+		container_path="$(realpath -m "/workspace/$(dirname "$rel")/$raw")"
+	fi
+
+	pair="${host_target}:${container_path}"
+	for p in "${seen_pairs[@]:-}"; do [[ "$p" == "$pair" ]] && continue 2; done
+	
+	seen_pairs+=("$pair")
+	symlink_mounts+=(-v "$pair")
+done < <(find "$cwd" -maxdepth "$symlink_max_depth" -type l -print0 2>/dev/null)
+
 
 docker run --rm -it \
 	-v "${cwd}:/workspace" \
-	-v "${HOME}/.claude/plugins:/root/.claude/plugins:ro" \
-	-v "${HOME}/.claude/settings.json:/root/.claude/settings.json:ro" \
+	-v "${HOME}/.claude/plugins:/home/claude/.claude/plugins:ro" \
+	-v "${HOME}/.claude/settings.json:/home/claude/.claude/settings.json:ro" \
+	"${symlink_mounts[@]}" \
 	-e CLAUDE_CODE_OAUTH_TOKEN \
 	-e AUTH_BLOB \
-	-e README_CONTENTS="$(cat ${cwd}/CLAUDE.md)" \
 	--cap-drop ALL \
-	ion-claude:latest "$@" \
+	--gpus all \
+	containers.ion606.dev/ion606/claude-docker:latest "$@" \
 	2>&1 | tee "$session_file"
